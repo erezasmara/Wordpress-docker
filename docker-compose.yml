@@ -24,5 +24,6 @@ services:
       - WORDPRESS_DB_NAME=$MYSQL_DB_NAME
     volumes:
       - ./wordpress:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
     ports:
       - 80:80
