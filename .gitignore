@@ -40,7 +40,7 @@ wp-content/*
 # ignore node dependency directories (used by grunt)
 node_modules/
 
-docker-compose.yml
+#docker-compose.yml
 
 # ignore OS generated files
 ehthumbs.db
