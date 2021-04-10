@@ -1,14 +1,18 @@
+version: '3.7'
+
 services:
  #phpadmin sql managment
   phpmyadmin:
     container_name: PHPMYADMIN
     image: phpmyadmin/phpmyadmin
     environment:
-      - PMA_HOST=$MYSQL_HOST
+      - PMA_HOST=db:3306
       - MYSQL_USER=$MYSQL_USER
       - MYSQL_PASSWORD=$MYSQL_PASSWORD
     ports:
       - 3001:80
+    depends_on:
+      - db
 
  #Wordpress server.
   wordpress:
@@ -16,12 +20,23 @@ services:
     image: wordpress:php7.4-apache
     env_file: .env
     environment:
-      - WORDPRESS_DB_HOST=$MYSQL_HOST
+      - WORDPRESS_DB_HOST=db:3306
       - WORDPRESS_DB_USER=$MYSQL_USER
       - WORDPRESS_DB_PASSWORD=$MYSQL_PASSWORD
       - WORDPRESS_DB_NAME=$MYSQL_DB_NAME
     volumes:
-      - ./wordpress:/var/www/html
       - ./wp-content:/var/www/html/wp-content
     ports:
       - 80:80
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    env_file: .env
+    environment:
+      - MYSQL_DATABASE=$MYSQL_DB_NAME
+    volumes:
+      - ./MysqlBb:/var/lib/mysql
+    ports:
+      - 3306:3306
