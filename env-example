@@ -1,0 +1,26 @@
+# our .env #
+
+#DB env variables
+MYSQL_ROOT_PASSWORD=root_password
+MYSQL_USER=#RDS USER
+MYSQL_PASSWORD=# RDS PASS
+MYSQL_HOST=#RDS PATH
+MYSQL_DB_NAME=#DB collection name.
+
+#wordpress env variables
+
+#swag env variables
+
+SWAG_EMAIL=#mail
+SWAG_URL=#dns url
+SWAG_DNSPLUGIN=#dns provided service
+
+#WP env variables
+WORDPRESS_AUTH_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxx
+WORDPRESS_SECURE_AUTH_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxx
+WORDPRESS_LOGGED_IN_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxx
+WORDPRESS_NONCE_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxx
+WORDPRESS_AUTH_SALT=xxxxxxxxxxxxxxxxxxxxxxxxxxx
+WORDPRESS_SECURE_AUTH_SALT=xxxxxxxxxxxxxxxxxxxxxxxxxxx
+WORDPRESS_LOGGED_IN_SALT=xxxxxxxxxxxxxxxxxxxxxxxxxxx
+WORDPRESS_NONCE_SALT=xxxxxxxxxxxxxxxxxxxxxxxxxxx
