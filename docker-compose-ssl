@@ -1,0 +1,61 @@
+services:
+  #secure connection with ssl and redrication with ngnix proxy , encrypt with cerbot and letencrypt.
+    swag:
+      image: linuxserver/swag
+      container_name: swag
+      depends_on:
+        - wordpress
+      volumes:
+        - ./config:/config
+        - ./default:/config/nginx/site-confs/default
+      environment:
+        - EMAIL=$SWAG_EMAIL
+        - URL=$SWAG_URL
+        - SUBDOMAINS=www,
+        - VALIDATION=http
+        - TZ=Europe/London
+        - PUID=1000
+        - PGID=1000
+        - DNSPLUGIN=$SWAG_DNSPLUGIN
+        - STAGING=true # false -> prod env , there is a limit sectificate requests
+      ports:
+        - 443:443
+        - 80:80
+  
+    db:
+      image: mysql:5.7
+      env_file: .env
+      environment:
+        - MYSQL_DATABASE=$MYSQL_DB_NAME
+      volumes:
+        - ./MysqlBb:/var/lib/mysql
+      ports:
+        - 3306:3306
+  
+   #phpadmin sql managment
+    phpmyadmin:
+      container_name: PHPMYADMIN
+      image: phpmyadmin/phpmyadmin
+      environment:
+        - PMA_HOST=$MYSQL_HOST
+        - MYSQL_USER=$MYSQL_USER
+        - MYSQL_PASSWORD=$MYSQL_PASSWORD
+      ports:
+        - 3001:80
+      depends_on:
+        - db      
+  
+   #Wordpress server.
+    wordpress:
+      container_name: WORDPRESS-STIE
+      image: wordpress:php7.4-apache
+      env_file: .env
+      environment:
+        - WORDPRESS_DB_HOST=$MYSQL_HOST
+        - WORDPRESS_DB_USER=$MYSQL_USER
+        - WORDPRESS_DB_PASSWORD=$MYSQL_PASSWORD
+        - WORDPRESS_DB_NAME=$MYSQL_DB_NAME
+      volumes:
+        - ./wp-content:/var/www/html/wp-content
+      depends_on:
+        - db
