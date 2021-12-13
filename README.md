@@ -1,8 +1,8 @@
 # Lift Wordpress with Docker
 
 There is two docker-compose file ,
-1)docker-compose-ssl.yml
-2)docker-compose.yml
+1) docker-compose-ssl.yml
+2) docker-compose.yml
 
 if you have ssl for yours website , you should use the second one else use the first file
 
