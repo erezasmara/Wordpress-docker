@@ -46,13 +46,10 @@ SWAG_EMAIL=#mail
 SWAG_URL=#dns url
 SWAG_DNSPLUGIN=#dns provided service
 
-#WP env variables
-WORDPRESS_AUTH_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxx
-WORDPRESS_SECURE_AUTH_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxx
-WORDPRESS_LOGGED_IN_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxx
-WORDPRESS_NONCE_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxx
-WORDPRESS_AUTH_SALT=xxxxxxxxxxxxxxxxxxxxxxxxxxx
-WORDPRESS_SECURE_AUTH_SALT=xxxxxxxxxxxxxxxxxxxxxxxxxxx
-WORDPRESS_LOGGED_IN_SALT=xxxxxxxxxxxxxxxxxxxxxxxxxxx
-WORDPRESS_NONCE_SALT=xxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+
+Final:
+wordpress on port 80
+phpmyadmin on port 3001
+
+Good luck
